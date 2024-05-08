@@ -1,0 +1,33 @@
+print("     BattleShip       ")
+print("  0 1 2 3 4 5 6 7 8 9")
+HIT = [21, 22, 23]
+places = 0
+miss = [20, 24, 21, 13]
+
+def get_guess():
+    while True:
+        guess = input("Enter your guess (row column): ")
+        try:
+            row, col = map(int, guess.split())
+            if 0 <= row <= 9 and 0 <= col <= 9:
+                return row, col
+            else:
+                print("Please enter valid coordinates (0-9).")
+        except ValueError:
+            print("Invalid input. Please enter two numbers separated by a space.")
+
+
+
+
+for x in range(10):
+    row = ""
+    for y in range(10):
+        if places in HIT:
+            ch = " o "
+        elif places in miss:
+            ch = " x "
+        else:
+            ch = " _ "
+        row = row + ch
+        places += 1
+    print(x, row)
